@@ -2,11 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:audioplayers/audioplayers.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  AudioPlayer audioPlayer = AudioPlayer();
+
+  MyApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -33,19 +36,18 @@ class MyApp extends StatelessWidget {
       ),
     );
   }
-}
 
-void playSound(int soundNumber) {
-  AudioPlayer audioPlayer = AudioPlayer();
-  audioPlayer.play(AssetSource('note$soundNumber.wav'));
-}
+  void playSound(int soundNumber) {
+    audioPlayer.play(AssetSource('note$soundNumber.wav'));
+  }
 
-Expanded buildKey(backgroundColor, int soundNumber) {
-  return Expanded(
-    child: TextButton(
-      onPressed: () => playSound(soundNumber),
-      style: TextButton.styleFrom(backgroundColor: backgroundColor),
-      child: const Text(''),
-    ),
-  );
+  Expanded buildKey(backgroundColor, int soundNumber) {
+    return Expanded(
+      child: TextButton(
+        onPressed: () => playSound(soundNumber),
+        style: TextButton.styleFrom(backgroundColor: backgroundColor),
+        child: const Text(''),
+      ),
+    );
+  }
 }
