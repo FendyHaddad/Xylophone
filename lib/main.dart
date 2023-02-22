@@ -9,22 +9,6 @@ class MyApp extends StatelessWidget {
   const MyApp({super.key});
   @override
   Widget build(BuildContext context) {
-    AudioPlayer audioPlayer = AudioPlayer();
-
-    void playSound(int soundNumber) {
-      audioPlayer.play(AssetSource('note$soundNumber.wav'));
-    }
-
-    Expanded buildKey(backgroundColor, int soundNumber) {
-      return Expanded(
-        child: TextButton(
-          onPressed: () => playSound(soundNumber),
-          style: TextButton.styleFrom(backgroundColor: backgroundColor),
-          child: const Text(''),
-        ),
-      );
-    }
-
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
@@ -49,4 +33,19 @@ class MyApp extends StatelessWidget {
       ),
     );
   }
+}
+
+void playSound(int soundNumber) {
+  AudioPlayer audioPlayer = AudioPlayer();
+  audioPlayer.play(AssetSource('note$soundNumber.wav'));
+}
+
+Expanded buildKey(backgroundColor, int soundNumber) {
+  return Expanded(
+    child: TextButton(
+      onPressed: () => playSound(soundNumber),
+      style: TextButton.styleFrom(backgroundColor: backgroundColor),
+      child: const Text(''),
+    ),
+  );
 }
