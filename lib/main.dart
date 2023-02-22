@@ -2,9 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:audioplayers/audioplayers.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
   runApp(MyApp());
 }
 
+// ignore: must_be_immutable
 class MyApp extends StatelessWidget {
   AudioPlayer audioPlayer = AudioPlayer();
 
